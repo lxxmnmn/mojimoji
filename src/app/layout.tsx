@@ -22,9 +22,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const githubUrl = 'https://github.com/lxxmnmn';
+
   return (
     <html lang="ko">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body
+        className={`min-h-screen flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+        <footer className="mt-auto p-4 text-center text-sm text-muted-foreground border-t">
+          <a
+            className="hover:underline hover:underline-offset-4"
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {githubUrl}
+          </a>
+        </footer>
+      </body>
     </html>
   );
 }

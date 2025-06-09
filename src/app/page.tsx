@@ -1,19 +1,14 @@
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+
 export default function Home() {
   return (
-    <div className="grid grid-rows-[1fr_auto] min-h-screen place-items-center gap-16 p-8 sm:p-20 font-[var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 items-center sm:items-start row-start-1">
-        <h1>MojiMoji</h1>
-      </main>
-      <footer className="flex flex-wrap items-center justify-center gap-6 row-start-2">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://github.com/lxxmnmn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          https://github.com/lxxmnmn
-        </a>
-      </footer>
-    </div>
+    <main className="flex flex-col items-center justify-center flex-grow py-20 px-4 gap-4 text-center">
+      <h1 className="text-3xl font-extrabold mb-4">MojiMoji</h1>
+      <p className="mb-6 text-muted-foreground">나를 담은 이모지를 찾아보세요 👋</p>
+      <Button asChild className="mb-8">
+        <Link href="/question">시작하기</Link>
+      </Button>
+    </main>
   );
 }
