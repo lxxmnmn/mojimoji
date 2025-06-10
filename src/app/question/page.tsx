@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Answers, QuestionKey } from '@/types';
+import type { Answers, QuestionKey } from '@/types';
 
 import { questions } from './question';
 

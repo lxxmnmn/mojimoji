@@ -1,4 +1,4 @@
-import { Question, QuestionKey } from '@/types';
+import type { Question, QuestionKey } from '@/types';
 import { QUESTION_LIST } from '@/constants';
 
 const options: Question['options'][] = [

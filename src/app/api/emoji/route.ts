@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import axios from 'axios';
-import { Answers } from '@/types';
+import type { Answers } from '@/types';
 import { QUESTION_LIST } from '@/constants';
 
 interface OpenAIChatMessage {
