@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useAnswerStore } from '@/stores';
 import type { Answers, QuestionKey } from '@/types';
 
 import { questions } from './question';
@@ -11,6 +12,7 @@ export default function QuestionPage() {
     () => Object.fromEntries(questions.map((item) => [item.question.key, ''])) as Answers
   );
   const [isFinished, setIsFinished] = useState(false);
+  const setAllAnswers = useAnswerStore((state) => state.setAnswers);
 
   const currentQuestion = questions[currentIndex];
 
@@ -21,6 +23,10 @@ export default function QuestionPage() {
       setCurrentIndex(currentIndex + 1);
     } else {
       setIsFinished(true);
+    }
+
+    if (isFinished) {
+      setAllAnswers(answers);
     }
   };
 
