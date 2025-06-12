@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Providers } from '@/components/Providers';
+import { Toaster } from '@/components/ui/sonner';
 
 import './globals.css';
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             {githubUrl}
           </a>
         </footer>
+        <Toaster />
       </body>
     </html>
   );
