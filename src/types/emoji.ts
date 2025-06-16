@@ -11,3 +11,8 @@ export interface EmojiQuestion {
   question: { label: string; key: EmojiQuestionKey };
   options: { label: string; value: string; emoji: string }[];
 }
+
+export interface EmojiResult {
+  emoji: string;
+  description: string;
+}

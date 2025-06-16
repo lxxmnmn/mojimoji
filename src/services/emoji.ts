@@ -1,11 +1,11 @@
 import axios from 'axios';
-import type { EmojiAnswers } from '@/types/emoji';
+import type { EmojiAnswers, EmojiResult } from '@/types/emoji';
 
 interface EmojiApiResponse {
-  result: string;
+  result: EmojiResult;
 }
 
-export const fetchEmojiResult = async (answers: EmojiAnswers): Promise<string> => {
+export const fetchEmojiResult = async (answers: EmojiAnswers): Promise<EmojiResult> => {
   const response = await axios.post<EmojiApiResponse>('/api/emoji', { answers });
   return response.data.result;
 };

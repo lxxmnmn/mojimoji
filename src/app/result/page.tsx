@@ -32,7 +32,12 @@ export default function ResultPage() {
 
   return (
     <main className="flex flex-col items-center justify-center flex-grow py-20 px-4 text-center">
-      {data && <p>{data}</p>}
+      {data && (
+        <div>
+          <h2>{data.emoji}</h2>
+          <p>{data.description}</p>
+        </div>
+      )}
     </main>
   );
 }
