@@ -1,17 +1,17 @@
 import { create } from 'zustand';
-import type { Answers, QuestionKey } from '@/types';
+import type { EmojiAnswers, EmojiQuestionKey } from '@/types/emoji';
 
 interface AnswerState {
-  answers: Answers;
-  setAnswers: (a: Answers) => void;
+  answers: EmojiAnswers;
+  setAnswers: (a: EmojiAnswers) => void;
   resetAnswers: () => void;
-  updateAnswer: (key: QuestionKey, value: string) => void;
+  updateAnswer: (key: EmojiQuestionKey, value: string) => void;
 }
 
 export const useAnswerStore = create<AnswerState>((set) => ({
-  answers: {} as Answers,
+  answers: {} as EmojiAnswers,
   setAnswers: (a) => set({ answers: a }),
-  resetAnswers: () => set({ answers: {} as Answers }),
+  resetAnswers: () => set({ answers: {} as EmojiAnswers }),
   updateAnswer: (key, value) =>
     set((state) => ({
       answers: {

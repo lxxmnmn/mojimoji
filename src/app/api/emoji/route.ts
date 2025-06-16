@@ -1,19 +1,10 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 import axios from 'axios';
-import type { Answers } from '@/types';
 import { QUESTION_LIST } from '@/constants';
 
-interface OpenAIChatMessage {
-  role: 'system' | 'user' | 'assistant';
-  content: string;
-}
-
-interface OpenAIResponse {
-  choices: {
-    message: OpenAIChatMessage;
-  }[];
-}
+import type { NextRequest } from 'next/server';
+import type { EmojiAnswers } from '@/types/emoji';
+import type { OpenAIChatMessage, OpenAIResponse } from '@/types/openAI';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -22,7 +13,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Missing answers' }, { status: 400 });
   }
 
-  const answers: Answers = body.answers;
+  const answers: EmojiAnswers = body.answers;
 
   if (Object.values(answers).some((v) => !v?.trim())) {
     return NextResponse.json({ error: 'Invalid answers' }, { status: 400 });
@@ -31,7 +22,7 @@ export async function POST(request: NextRequest) {
   const systemPrompt: string =
     'You are an assistant that recommends a single emoji to represent the user’s personality based on their answers to a multiple-choice quiz. Choose only one emoji and explain your reasoning in one short sentence.';
 
-  const getUserPrompt = (answers: Answers): string => {
+  const getUserPrompt = (answers: EmojiAnswers): string => {
     return (
       'The user has answered the following questions:\n\n' +
       QUESTION_LIST.map((item, index) => `${index + 1}. ${item.key}: ${answers[item.key]}`).join(

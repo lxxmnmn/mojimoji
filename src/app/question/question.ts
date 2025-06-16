@@ -1,7 +1,7 @@
-import type { Question, QuestionKey } from '@/types';
+import type { EmojiQuestion, EmojiQuestionKey } from '@/types/emoji';
 import { QUESTION_LIST } from '@/constants';
 
-const options: Question['options'][] = [
+const options: EmojiQuestion['options'][] = [
   [
     {
       label: '혼자 책 읽으며 생각에 잠기기',
@@ -114,11 +114,11 @@ const options: Question['options'][] = [
   ],
 ];
 
-export const questions: Question[] = QUESTION_LIST.map((item, index) => ({
+export const questions: EmojiQuestion[] = QUESTION_LIST.map((item, index) => ({
   id: `question-${index + 1}`,
   question: {
     label: item.label,
-    key: item.key as QuestionKey,
+    key: item.key as EmojiQuestionKey,
   },
   options: options[index],
 }));

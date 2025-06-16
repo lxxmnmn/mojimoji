@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useAnswerStore } from '@/stores';
 import { Progress } from '@/components/ui/progress';
-import type { QuestionKey } from '@/types';
+
+import type { EmojiQuestionKey } from '@/types/emoji';
 
 import { questions } from './question';
 
@@ -18,7 +19,7 @@ export default function QuestionPage() {
     currentIndex < totalQuestions ? questions[currentIndex] : questions[totalQuestions - 1];
   const progressPercent = Math.min((currentIndex / totalQuestions) * 100, 100);
 
-  const selectAnswer = (key: QuestionKey, value: string) => {
+  const selectAnswer = (key: EmojiQuestionKey, value: string) => {
     updateAnswer(key, value);
     setCurrentIndex((prev) => prev + 1);
   };
